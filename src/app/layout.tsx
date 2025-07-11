@@ -24,7 +24,12 @@ export const metadata: Metadata = {
   title: 'EduCrack - Your Learning Companion',
   description: 'An educational platform for students.',
   icons: {
-    icon: 'https://cdn-icons-png.flaticon.com/128/8224/8224757.png',
+    icon: [
+      {
+        url: 'https://cdn-icons-png.flaticon.com/128/8224/8224757.png',
+        href: 'https://cdn-icons-png.flaticon.com/128/8224/8224757.png',
+      },
+    ],
   },
 };
 
