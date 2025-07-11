@@ -42,12 +42,6 @@ function NavLinks() {
               Dashboard
             </Link>
           </Button>
-          <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground justify-start">
-            <Link href="/profile">
-              <User className="mr-2 h-4 w-4" />
-              Profile
-            </Link>
-          </Button>
            <Button variant="ghost" onClick={handleLogout} className="hover:bg-transparent hover:text-accent-foreground justify-start">
             <LogOut className="mr-2 h-4 w-4" />
             Logout
