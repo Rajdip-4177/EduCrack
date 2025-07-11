@@ -41,9 +41,6 @@ export default function Home() {
           {classes.map((cls) => (
             <ClassCard key={cls.id} {...cls} />
           ))}
-           <div className="md:col-span-2 lg:col-span-1">
-            <ClassCard id="12-jee" name="12 JEE" description="Master advanced topics for Joint Entrance Examination." />
-          </div>
         </div>
       </section>
     </div>
