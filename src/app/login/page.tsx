@@ -73,14 +73,14 @@ export default function LoginPage() {
       <Image
         src="https://ide-media-prod.a.run.app/api/medias/6a6358c3-e117-4933-9118-20427c30d22a"
         alt="Background"
-        layout="fill"
+        fill
         objectFit="cover"
         className="absolute inset-0 z-0 opacity-70"
         data-ai-hint="abstract art trees"
       />
       <div className="absolute inset-0 bg-black/50 z-0"></div>
 
-      <div className="relative z-10 w-full max-w-md space-y-8 rounded-2xl bg-white/10 p-10 shadow-2xl backdrop-blur-lg">
+      <div className="relative z-10 w-full max-w-md space-y-8 rounded-2xl bg-white/10 p-10 shadow-2xl backdrop-blur-lg border border-white/10">
         <div>
           <h2 className="text-center text-4xl font-bold tracking-tight text-white font-headline">
             Login
