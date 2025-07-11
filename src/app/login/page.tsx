@@ -71,7 +71,7 @@ export default function LoginPage() {
   return (
     <div className="relative flex min-h-screen items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <Image
-        src="https://ide-media-prod.a.run.app/api/medias/6a6358c3-e117-4933-9118-20427c30d22a"
+        src="/images/auth-background.jpg"
         alt="Background"
         fill
         objectFit="cover"
