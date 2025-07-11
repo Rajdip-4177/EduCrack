@@ -3,7 +3,7 @@ import { findClass, getSubjects } from '@/lib/data';
 import { SubjectCard } from '@/components/subject-card';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { BackButton } from '@/components/back-button';
-import HeroBackground from '@/components/hero-background';
+import ClassHeroBackground from '@/components/class-hero-background';
 
 type ClassPageProps = {
   params: { classId: string };
@@ -31,7 +31,7 @@ export default function ClassPage({ params }: ClassPageProps) {
         <BackButton />
       </div>
       <div className="relative mt-6 py-12 text-center rounded-lg text-white shadow-xl overflow-hidden">
-        <HeroBackground />
+        <ClassHeroBackground />
         <div className="relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold font-headline">{classInfo.name}</h1>
           <p className="mt-2 text-lg text-purple-200">{classInfo.description}</p>
