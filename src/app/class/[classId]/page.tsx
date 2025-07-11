@@ -1,3 +1,4 @@
+
 import { notFound } from 'next/navigation';
 import { findClass, getSubjects } from '@/lib/data';
 import { SubjectCard } from '@/components/subject-card';
@@ -26,13 +27,13 @@ export default function ClassPage({ params }: ClassPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center flex-wrap gap-4">
         <Breadcrumbs segments={breadcrumbSegments} />
         <BackButton />
       </div>
       <div className="relative mt-6 py-12 text-center rounded-lg text-white shadow-xl overflow-hidden">
         <ClassHeroBackground />
-        <div className="relative z-10">
+        <div className="relative z-10 p-4">
           <h1 className="text-4xl md:text-5xl font-bold font-headline">{classInfo.name}</h1>
           <p className="mt-2 text-lg text-purple-200">{classInfo.description}</p>
         </div>

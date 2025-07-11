@@ -1,3 +1,4 @@
+
 import { notFound } from 'next/navigation';
 import { findClass, findSubject, getChapters } from '@/lib/data';
 import { Breadcrumbs } from '@/components/breadcrumbs';
@@ -33,19 +34,19 @@ export default function SubjectPage({ params }: SubjectPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center flex-wrap gap-4">
         <Breadcrumbs segments={breadcrumbSegments} />
         <BackButton />
       </div>
       <div className="mt-6">
-        <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">{subjectInfo.name}</h1>
-        <p className="mt-2 text-lg text-muted-foreground">
+        <h1 className="text-3xl md:text-5xl font-bold font-headline text-primary">{subjectInfo.name}</h1>
+        <p className="mt-2 text-md md:text-lg text-muted-foreground">
           Content for {classInfo.name}
         </p>
       </div>
 
       <Tabs defaultValue="notes" className="mt-8">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 h-auto sm:h-10">
           <TabsTrigger value="notes">Notes</TabsTrigger>
           <TabsTrigger value="qa">Q&A</TabsTrigger>
           <TabsTrigger value="tests">Tests</TabsTrigger>
