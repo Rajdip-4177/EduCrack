@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { GraduationCap, User, Info, Mail, LayoutDashboard } from 'lucide-react';
+import { GraduationCap, User, Mail, LayoutDashboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function Header() {
@@ -15,12 +15,6 @@ export default function Header() {
             <Link href="/dashboard">
               <LayoutDashboard className="mr-2 h-4 w-4" />
               Dashboard
-            </Link>
-          </Button>
-          <Button variant="ghost" asChild>
-            <Link href="/about">
-              <Info className="mr-2 h-4 w-4" />
-              About
             </Link>
           </Button>
           <Button variant="ghost" asChild>
