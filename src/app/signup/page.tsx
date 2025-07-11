@@ -82,12 +82,12 @@ export default function SignupPage() {
   return (
      <div className="relative flex min-h-screen items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <Image
-        src="https://placehold.co/1920x1080.png"
+        src="https://ide-media-prod.a.run.app/api/medias/6a6358c3-e117-4933-9118-20427c30d22a"
         alt="Background"
         layout="fill"
         objectFit="cover"
         className="absolute inset-0 z-0 opacity-70"
-        data-ai-hint="serene landscape illustration"
+        data-ai-hint="abstract art trees"
       />
       <div className="absolute inset-0 bg-black/50 z-0"></div>
 
