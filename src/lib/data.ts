@@ -5,6 +5,7 @@ export type Chapter = {
 };
 
 export type Subject = {
+  classId: string; // Keep track of parent class
   id: string;
   name: string;
   icon: string;
@@ -18,7 +19,7 @@ export type ClassInfo = {
   subjects: Subject[];
 };
 
-export const classes: Omit<ClassInfo, 'subjects'>[] = [
+export const classesData: Omit<ClassInfo, 'subjects'>[] = [
   { id: 'class-10', name: 'Class 10', description: 'Comprehensive curriculum for 10th-grade students.' },
   { id: '11-neet', name: '11 NEET', description: 'Foundation course for National Eligibility cum Entrance Test.' },
   { id: '11-jee', name: '11 JEE', description: 'Prepare for the Joint Entrance Examination (Main & Advanced).' },
@@ -26,7 +27,7 @@ export const classes: Omit<ClassInfo, 'subjects'>[] = [
   { id: '12-jee', name: '12 JEE', description: 'Master advanced topics for Joint Entrance Examination.' },
 ];
 
-export const subjectsByClass: Record<string, Subject[]> = {
+export const subjectsByClass: Record<string, Omit<Subject, 'classId'>[]> = {
   'class-10': [
     { 
       id: 'math', name: 'Mathematics', icon: 'Calculator', 
@@ -394,7 +395,35 @@ export const subjectsByClass: Record<string, Subject[]> = {
   ],
 };
 
-export const findClass = (id: string) => classes.find((c) => c.id === id);
-export const getSubjects = (classId: string) => subjectsByClass[classId] || [];
-export const findSubject = (classId: string, subjectId: string) => getSubjects(classId).find(s => s.id === subjectId);
-export const getChapters = (classId: string, subjectId: string) => findSubject(classId, subjectId)?.chapters || [];
+// Renamed for clarity
+export const classes = classesData;
+
+export const findClass = (id: string): ClassInfo | undefined => {
+  const classBase = classesData.find((c) => c.id === id);
+  if (!classBase) {
+    return undefined;
+  }
+  const subjects = getSubjects(id);
+  return {
+    ...classBase,
+    subjects: subjects,
+  };
+};
+
+export const getSubjects = (classId: string): Subject[] => {
+  const subjectsForClass = subjectsByClass[classId] || [];
+  // Add classId to each subject for linking purposes
+  return subjectsForClass.map(s => ({ ...s, classId }));
+};
+
+export const findSubject = (classId: string, subjectId: string): Subject | undefined => {
+  const subjects = getSubjects(classId);
+  return subjects.find(s => s.id === subjectId);
+};
+
+export const getChapters = (classId: string, subjectId: string): Chapter[] => {
+  const subject = findSubject(classId, subjectId);
+  return subject?.chapters || [];
+};
+
+    
