@@ -17,11 +17,12 @@ export default function SubjectPage({ params }: SubjectPageProps) {
   const { classId, subjectId } = params;
   const classInfo = findClass(classId);
   const subjectInfo = findSubject(classId, subjectId);
-  const chapters = getChapters(classId, subjectId);
 
   if (!classInfo || !subjectInfo) {
     notFound();
   }
+  
+  const chapters = getChapters(classId, subjectId);
 
   const breadcrumbSegments = [
     { title: 'Home', href: '/' },
@@ -42,7 +43,7 @@ export default function SubjectPage({ params }: SubjectPageProps) {
       <Tabs defaultValue="notes" className="mt-8">
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="notes">Notes</TabsTrigger>
-          <TabsTrigger value="qa">Q&amp;A</TabsTrigger>
+          <TabsTrigger value="qa">Q&A</TabsTrigger>
           <TabsTrigger value="tests">Tests</TabsTrigger>
         </TabsList>
         <TabsContent value="notes" className="mt-6">
