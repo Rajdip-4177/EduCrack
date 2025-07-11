@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { findClass, getSubjects } from '@/lib/data';
 import { SubjectCard } from '@/components/subject-card';
 import { Breadcrumbs } from '@/components/breadcrumbs';
+import { BackButton } from '@/components/back-button';
 
 type ClassPageProps = {
   params: { classId: string };
@@ -10,11 +11,12 @@ type ClassPageProps = {
 export default function ClassPage({ params }: ClassPageProps) {
   const { classId } = params;
   const classInfo = findClass(classId);
-  const subjects = getSubjects(classId);
-
+  
   if (!classInfo) {
     notFound();
   }
+  
+  const subjects = getSubjects(classId);
 
   const breadcrumbSegments = [
     { title: 'Home', href: '/' },
@@ -23,7 +25,10 @@ export default function ClassPage({ params }: ClassPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Breadcrumbs segments={breadcrumbSegments} />
+      <div className="flex justify-between items-center">
+        <Breadcrumbs segments={breadcrumbSegments} />
+        <BackButton />
+      </div>
       <div className="mt-6 py-12 text-center rounded-lg bg-gradient-to-br from-primary to-accent text-white shadow-xl">
         <h1 className="text-4xl md:text-5xl font-bold font-headline">{classInfo.name}</h1>
         <p className="mt-2 text-lg text-purple-200">{classInfo.description}</p>

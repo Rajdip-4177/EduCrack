@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Skeleton } from '@/components/ui/skeleton';
+import { BackButton } from '@/components/back-button';
 
 type SubjectPageProps = {
   params: {
@@ -32,7 +33,10 @@ export default function SubjectPage({ params }: SubjectPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Breadcrumbs segments={breadcrumbSegments} />
+      <div className="flex justify-between items-center">
+        <Breadcrumbs segments={breadcrumbSegments} />
+        <BackButton />
+      </div>
       <div className="mt-6">
         <h1 className="text-4xl md:text-5xl font-bold font-headline text-primary">{subjectInfo.name}</h1>
         <p className="mt-2 text-lg text-muted-foreground">
@@ -43,7 +47,7 @@ export default function SubjectPage({ params }: SubjectPageProps) {
       <Tabs defaultValue="notes" className="mt-8">
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="notes">Notes</TabsTrigger>
-          <TabsTrigger value="qa">Q&amp;A</TabsTrigger>
+          <TabsTrigger value="qa">Q&A</TabsTrigger>
           <TabsTrigger value="tests">Tests</TabsTrigger>
         </TabsList>
         <TabsContent value="notes" className="mt-6">
@@ -74,7 +78,7 @@ export default function SubjectPage({ params }: SubjectPageProps) {
         <TabsContent value="qa" className="mt-6">
            <Card>
             <CardHeader>
-              <CardTitle>Questions &amp; Answers</CardTitle>
+              <CardTitle>Questions & Answers</CardTitle>
               <CardDescription>Frequently asked questions and expert answers for each chapter.</CardDescription>
             </CardHeader>
             <CardContent>
