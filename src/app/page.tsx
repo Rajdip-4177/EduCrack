@@ -38,7 +38,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 3, duration: 1, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
-          className="absolute bottom-10 z-10"
+          className="absolute bottom-20 z-10"
         >
           <Link href="#classes" aria-label="Scroll to classes">
             <ArrowDown className="h-8 w-8 text-white/70" />
