@@ -43,7 +43,7 @@ export default function SubjectPage({ params }: SubjectPageProps) {
       <Tabs defaultValue="notes" className="mt-8">
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="notes">Notes</TabsTrigger>
-          <TabsTrigger value="qa">Q&A</TabsTrigger>
+          <TabsTrigger value="qa">Q&amp;A</TabsTrigger>
           <TabsTrigger value="tests">Tests</TabsTrigger>
         </TabsList>
         <TabsContent value="notes" className="mt-6">
