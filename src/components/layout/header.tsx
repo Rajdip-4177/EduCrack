@@ -11,19 +11,19 @@ export default function Header() {
           <span className="font-bold font-headline text-xl">EduCrack</span>
         </Link>
         <nav className="flex items-center space-x-2">
-           <Button variant="ghost" asChild>
+           <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground">
             <Link href="/dashboard">
               <LayoutDashboard className="mr-2 h-4 w-4" />
               Dashboard
             </Link>
           </Button>
-          <Button variant="ghost" asChild>
+          <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground">
             <Link href="/contact">
               <Mail className="mr-2 h-4 w-4" />
               Contact Us
             </Link>
           </Button>
-           <Button variant="ghost" asChild>
+           <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground">
             <Link href="/profile">
               <User className="mr-2 h-4 w-4" />
               Profile
