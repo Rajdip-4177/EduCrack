@@ -1,41 +1,73 @@
-
 'use client';
 
 import Link from 'next/link';
-import { GraduationCap, User, Mail, LayoutDashboard, Menu } from 'lucide-react';
+import { GraduationCap, User, Mail, LayoutDashboard, Menu, LogOut, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
   SheetClose
-} from "@/components/ui/sheet"
+} from "@/components/ui/sheet";
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useAuth } from '@/contexts/auth-context';
+import { logoutUser } from '@/lib/auth';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
 import * as React from 'react';
 
 function NavLinks() {
+  const { user } = useAuth();
+  const router = useRouter();
+  const { toast } = useToast();
+
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+      toast({ title: "Logged out successfully." });
+      router.push('/');
+      router.refresh();
+    } catch (error) {
+      toast({ variant: 'destructive', title: "Logout failed." });
+    }
+  };
+
   return (
     <>
-      <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground justify-start">
-        <Link href="/dashboard">
-          <LayoutDashboard className="mr-2 h-4 w-4" />
-          Dashboard
-        </Link>
-      </Button>
-      <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground justify-start">
-        <Link href="/contact">
-          <Mail className="mr-2 h-4 w-4" />
-          Contact Us
-        </Link>
-      </Button>
-      <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground justify-start">
-        <Link href="/profile">
-          <User className="mr-2 h-4 w-4" />
-          Profile
-        </Link>
-      </Button>
+      {user ? (
+        <>
+          <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground justify-start">
+            <Link href="/dashboard">
+              <LayoutDashboard className="mr-2 h-4 w-4" />
+              Dashboard
+            </Link>
+          </Button>
+          <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground justify-start">
+            <Link href="/profile">
+              <User className="mr-2 h-4 w-4" />
+              Profile
+            </Link>
+          </Button>
+           <Button variant="ghost" onClick={handleLogout} className="hover:bg-transparent hover:text-accent-foreground justify-start">
+            <LogOut className="mr-2 h-4 w-4" />
+            Logout
+          </Button>
+        </>
+      ) : (
+        <>
+          <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground justify-start">
+            <Link href="/login">
+              <LogIn className="mr-2 h-4 w-4" />
+              Login
+            </Link>
+          </Button>
+          <Button asChild>
+            <Link href="/signup">Sign Up</Link>
+          </Button>
+        </>
+      )}
     </>
-  )
+  );
 }
 
 function MobileNav() {
@@ -72,30 +104,12 @@ export default function Header() {
           <GraduationCap className="h-6 w-6 text-primary" />
           <span className="font-bold font-headline text-xl">EduCrack</span>
         </Link>
-        {isMobile ? (
+        <div className="hidden md:flex items-center space-x-2">
+            <NavLinks />
+        </div>
+        <div className="md:hidden">
           <MobileNav />
-        ) : (
-          <nav className="flex items-center space-x-2">
-            <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground">
-              <Link href="/dashboard">
-                <LayoutDashboard className="mr-2 h-4 w-4" />
-                Dashboard
-              </Link>
-            </Button>
-            <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground">
-              <Link href="/contact">
-                <Mail className="mr-2 h-4 w-4" />
-                Contact Us
-              </Link>
-            </Button>
-            <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground">
-              <Link href="/profile">
-                <User className="mr-2 h-4 w-4" />
-                Profile
-              </Link>
-            </Button>
-          </nav>
-        )}
+        </div>
       </div>
     </header>
   );

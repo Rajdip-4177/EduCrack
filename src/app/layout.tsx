@@ -6,6 +6,7 @@ import Header from '@/components/layout/header';
 import dynamic from 'next/dynamic';
 import { cn } from '@/lib/utils';
 import { Skeleton } from '@/components/ui/skeleton';
+import { AuthProvider } from '@/contexts/auth-context';
 
 const fontSans = Inter({
   subsets: ['latin'],
@@ -45,12 +46,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className={cn('font-body antialiased', fontSans.variable, fontHeading.variable)}>
-        <div className="relative flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <DynamicFooter />
-        </div>
-        <Toaster />
+        <AuthProvider>
+          <div className="relative flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <DynamicFooter />
+          </div>
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );
