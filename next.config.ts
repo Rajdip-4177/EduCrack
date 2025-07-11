@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'ide-media-prod.a.run.app',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
