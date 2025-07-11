@@ -23,6 +23,9 @@ const fontHeading = Poppins({
 export const metadata: Metadata = {
   title: 'EduCrack - Your Learning Companion',
   description: 'An educational platform for students.',
+  icons: {
+    icon: 'https://cdn-icons-png.flaticon.com/128/8224/8224757.png',
+  },
 };
 
 const DynamicFooter = dynamic(() => import('@/components/layout/footer'), {
