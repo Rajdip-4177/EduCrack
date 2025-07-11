@@ -3,8 +3,9 @@ import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/header';
-import Footer from '@/components/layout/footer';
+import dynamic from 'next/dynamic';
 import { cn } from '@/lib/utils';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const fontSans = Inter({
   subsets: ['latin'],
@@ -24,6 +25,10 @@ export const metadata: Metadata = {
   description: 'An educational platform for students.',
 };
 
+const DynamicFooter = dynamic(() => import('@/components/layout/footer'), {
+  loading: () => <Skeleton className="h-24 w-full" />,
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,7 +40,7 @@ export default function RootLayout({
         <div className="relative flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">{children}</main>
-          <Footer />
+          <DynamicFooter />
         </div>
         <Toaster />
       </body>
