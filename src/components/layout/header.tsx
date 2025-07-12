@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -50,13 +51,13 @@ function NavLinks() {
       ) : (
         <>
           <Button variant="ghost" asChild className="hover:bg-transparent hover:text-accent-foreground justify-start">
-            <Link href="/login">
+            <Link href="/auth">
               <LogIn className="mr-2 h-4 w-4" />
               Login
             </Link>
           </Button>
           <Button asChild>
-            <Link href="/signup">Sign Up</Link>
+            <Link href="/auth">Sign Up</Link>
           </Button>
         </>
       )}

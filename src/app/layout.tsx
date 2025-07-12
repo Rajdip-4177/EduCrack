@@ -1,12 +1,11 @@
+
 import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import Header from '@/components/layout/header';
-import dynamic from 'next/dynamic';
-import { cn } from '@/lib/utils';
-import { Skeleton } from '@/components/ui/skeleton';
 import { AuthProvider } from '@/contexts/auth-context';
+import LayoutClient from './layout-client';
+import { cn } from '@/lib/utils';
 
 const fontSans = Inter({
   subsets: ['latin'],
@@ -16,7 +15,7 @@ const fontSans = Inter({
 
 const fontHeading = Poppins({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-heading',
   display: 'swap',
 });
@@ -34,10 +33,6 @@ export const metadata: Metadata = {
   },
 };
 
-const DynamicFooter = dynamic(() => import('@/components/layout/footer'), {
-  loading: () => <Skeleton className="h-24 w-full" />,
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -47,11 +42,7 @@ export default function RootLayout({
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className={cn('font-body antialiased', fontSans.variable, fontHeading.variable)}>
         <AuthProvider>
-          <div className="relative flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <DynamicFooter />
-          </div>
+          <LayoutClient>{children}</LayoutClient>
           <Toaster />
         </AuthProvider>
       </body>
