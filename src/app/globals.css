@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 290 50% 98%;
+    --foreground: 280 10% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 280 10% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 280 10% 13%;
+    --primary: 289 67% 35%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 291 44% 93%;
+    --secondary-foreground: 289 67% 35%;
+    --muted: 291 44% 96%;
+    --muted-foreground: 291 10% 45%;
+    --accent: 291 65% 42%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 291 20% 88%;
+    --input: 291 20% 92%;
+    --ring: 289 67% 45%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 280 10% 10%;
+    --foreground: 0 0% 98%;
+    --card: 280 10% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 280 10% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 291 44% 83%;
+    --primary-foreground: 289 67% 10%;
+    --secondary: 289 67% 20%;
+    --secondary-foreground: 291 44% 90%;
+    --muted: 289 67% 15%;
+    --muted-foreground: 290 10% 65%;
+    --accent: 291 65% 52%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 289 67% 20%;
+    --input: 289 67% 20%;
+    --ring: 291 65% 52%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Hero Background Animation */
+.hero-gradient-bg {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    top: 0;
+    left: 0;
+}
+.hero-gradients-container {
+    filter: blur(40px);
+    width: 100%;
+    height: 100%;
+}
+.hero-g1, .hero-g2, .hero-g3, .hero-g4, .hero-g5 {
+    position: absolute;
+    border-radius: 100%;
+    mix-blend-mode: screen;
+}
+.hero-g1 {
+    background: radial-gradient(circle at center, rgba(123, 31, 162, 0.8) 0, rgba(123, 31, 162, 0) 50%) no-repeat;
+    width: 70vw;
+    height: 70vh;
+    top: calc(50% - 35vh);
+    left: calc(50% - 35vw);
+    transform-origin: center center;
+    animation: move-g1 15s infinite;
+}
+.hero-g2 {
+    background: radial-gradient(circle at center, rgba(156, 39, 176, 0.8) 0, rgba(156, 39, 176, 0) 50%) no-repeat;
+    width: 70vw;
+    height: 70vh;
+    top: calc(50% - 35vh);
+    left: calc(50% - 35vw);
+    transform-origin: top center;
+    animation: move-g2 15s infinite;
+}
+.hero-g3 {
+    background: radial-gradient(circle at center, rgba(74, 20, 140, 0.8) 0, rgba(74, 20, 140, 0) 50%) no-repeat;
+    width: 60vw;
+    height: 60vh;
+    top: calc(50% - 30vh + 10vh);
+    left: calc(50% - 30vw - 10vw);
+    transform-origin: center center;
+    animation: move-g3 15s infinite;
+}
+.hero-g4 {
+    background: radial-gradient(circle at center, rgba(21, 0, 48, 0.8) 0, rgba(21, 0, 48, 0) 50%) no-repeat;
+    width: 50vw;
+    height: 50vh;
+    top: calc(50% - 25vh);
+    left: calc(50% - 25vw);
+    transform-origin: center center;
+    animation: move-g4 18s infinite;
+}
+
+@keyframes move-g1 {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    25% { transform: translate(10vw, -10vh) rotate(90deg) scale(1.1); }
+    50% { transform: translate(-15vw, 15vh) rotate(180deg) scale(0.9); }
+    75% { transform: translate(5vw, -5vh) rotate(270deg) scale(1.2); }
+    100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+}
+@keyframes move-g2 {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1.2); }
+    25% { transform: translate(-12vw, 8vh) rotate(-90deg) scale(1); }
+    50% { transform: translate(10vw, -10vh) rotate(-180deg) scale(1.3); }
+    75% { transform: translate(-8vw, 12vh) rotate(-270deg) scale(1.1); }
+    100% { transform: translate(0, 0) rotate(-360deg) scale(1.2); }
+}
+@keyframes move-g3 {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+@keyframes move-g4 {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(20vw, 20vh); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Class Hero Background Animation */
+.class-hero-gradient-bg {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    top: 0;
+    left: 0;
+}
+.class-hero-gradients-container {
+    filter: blur(50px) brightness(0.8);
+    width: 100%;
+    height: 100%;
+}
+.class-hero-g1, .class-hero-g2, .class-hero-g3, .class-hero-g4, .class-hero-g5 {
+    position: absolute;
+    border-radius: 100%;
+    mix-blend-mode: screen;
+    opacity: 0.7;
+}
+.class-hero-g1 {
+    background: radial-gradient(circle at center, rgba(173, 58, 223, 0.6) 0, rgba(173, 58, 223, 0) 60%) no-repeat;
+    width: 60vw;
+    height: 60vh;
+    top: 10%;
+    left: 10%;
+    animation: drift-g1 20s infinite alternate ease-in-out;
+}
+.class-hero-g2 {
+    background: radial-gradient(circle at center, rgba(98, 0, 153, 0.6) 0, rgba(98, 0, 153, 0) 60%) no-repeat;
+    width: 50vw;
+    height: 50vh;
+    top: 40%;
+    right: 15%;
+    animation: drift-g2 22s infinite alternate ease-in-out;
+}
+.class-hero-g3 {
+    background: radial-gradient(circle at center, rgba(74, 20, 140, 0.5) 0, rgba(74, 20, 140, 0) 70%) no-repeat;
+    width: 80vw;
+    height: 80vh;
+    bottom: -20%;
+    left: 25%;
+    animation: pulse-g3 18s infinite alternate ease-in-out;
+}
+.class-hero-g4 {
+    background: radial-gradient(circle at center, rgba(30, 0, 60, 0.7) 0, rgba(30, 0, 60, 0) 60%) no-repeat;
+    width: 40vw;
+    height: 40vh;
+    top: 5%;
+    right: 5%;
+    animation: drift-g1 25s infinite alternate ease-in-out;
+}
+.class-hero-g5 {
+      background: radial-gradient(circle at center, rgba(156, 39, 176, 0.5) 0, rgba(156, 39, 176, 0) 70%) no-repeat;
+    width: 55vw;
+    height: 55vh;
+    bottom: 5%;
+    left: -10%;
+    animation: drift-g2 19s infinite alternate ease-in-out;
+}
+
+@keyframes drift-g1 {
+    from { transform: translate(-5vw, -5vh) scale(1); }
+    to { transform: translate(5vw, 5vh) scale(1.1); }
+}
+@keyframes drift-g2 {
+    from { transform: translate(8vw, 10vh) scale(1); }
+    to { transform: translate(-8vw, -10vh) scale(0.9); }
+}
+@keyframes pulse-g3 {
+    from { transform: scale(1); opacity: 0.5; }
+    to { transform: scale(1.3); opacity: 0.7; }
+}
