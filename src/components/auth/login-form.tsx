@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
@@ -60,19 +59,19 @@ export function LoginForm({ onToggleView }: LoginFormProps) {
   };
 
   return (
-    <div className="flex flex-col text-white">
+    <div className="w-full text-white">
       <div className="text-center mb-6">
-        <p className="text-sm mb-2">
+         <span className="text-white text-sm">
           Don&apos;t have an account?{' '}
-          <button onClick={onToggleView} className="font-semibold hover:underline">
+          <button onClick={onToggleView} className="font-semibold hover:underline focus:outline-none">
             Sign Up
           </button>
-        </p>
-        <h2 className="text-3xl font-bold">Login</h2>
+        </span>
+        <h2 className="text-3xl font-bold mt-2">Login</h2>
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField
             control={form.control}
             name="email"
@@ -116,18 +115,17 @@ export function LoginForm({ onToggleView }: LoginFormProps) {
             )}
           />
 
-          <Button type="submit" className="w-full h-11 text-base font-semibold bg-white text-black rounded-full hover:bg-white/80" disabled={isLoading}>
-            {isLoading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
-            Sign In
-          </Button>
-
-          <div className="flex justify-between items-center text-xs mt-2">
-            <div>
-              <input type="checkbox" id="remember-me" className="mr-2 accent-primary" />
+          <div className="flex justify-between items-center text-xs mt-2 text-white">
+            <div className="flex items-center gap-2">
+              <input type="checkbox" id="remember-me" className="accent-primary" />
               <label htmlFor="remember-me">Remember Me</label>
             </div>
             <Link href="#" className="hover:underline">Forgot password?</Link>
           </div>
+          
+          <button type="submit" className="w-full h-11 text-base font-semibold bg-white text-black rounded-full hover:bg-white/80 flex items-center justify-center" disabled={isLoading}>
+            {isLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : 'Sign In'}
+          </button>
         </form>
       </Form>
     </div>
