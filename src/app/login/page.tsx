@@ -74,8 +74,9 @@ export default function LoginPage() {
         src="/images/auth-background.jpg"
         alt="Background"
         fill
-        objectFit="cover"
-        className="absolute inset-0 z-0 opacity-70"
+        priority
+        quality={80}
+        className="absolute inset-0 z-0 object-cover opacity-70"
         data-ai-hint="abstract art trees"
       />
       <div className="absolute inset-0 bg-black/50 z-0"></div>

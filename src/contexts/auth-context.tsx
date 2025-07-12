@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import { app } from '@/lib/firebase';
-import { Skeleton } from '@/components/ui/skeleton';
+import Loading from '@/app/loading';
 
 const auth = getAuth(app);
 
@@ -31,15 +31,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   if (loading) {
-    return (
-        <div className="flex flex-col min-h-screen">
-          <Skeleton className="h-14 w-full" />
-            <main className="flex-1 container mx-auto p-4">
-              <Skeleton className="w-full h-[80vh]" />
-            </main>
-          <Skeleton className="h-24 w-full" />
-        </div>
-    );
+    return <Loading />;
   }
 
   return (
